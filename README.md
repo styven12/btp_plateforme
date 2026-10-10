@@ -30,7 +30,7 @@ Exemple pour un téléphone physique : `flutter run --dart-define=API_BASE_URL=h
 
 ### Déploiement web sur Vercel
 
-La configuration Vercel à la racine installe la dernière version stable de Flutter pendant le build, configure l’application pour utiliser `https://btp-plateforme-backend.onrender.com/api` et déploie `build/web`. Le SDK suit la branche `stable` pour rester compatible avec les versions de Flutter requises par les dépendances ; la version utilisée peut donc évoluer entre deux builds. Les chemins de navigation web sont réécrits vers `index.html` pour permettre le routage de l’application.
+La configuration Vercel à la racine installe Flutter 3.47.7 (canal stable) pendant le build, configure l’application pour utiliser `https://btp-plateforme-backend.onrender.com/api` et déploie `build/web`. Le script récupère le tag de version exact afin que Flutter puisse identifier correctement son numéro de version et satisfaire les contraintes SDK des dépendances. Les chemins de navigation web sont réécrits vers `index.html` pour permettre le routage de l’application.
 
 Les builds Vercel et locaux restent indépendants : pour lancer l’application localement avec l’API locale, utilisez `flutter run` (ou `flutter run --dart-define=API_BASE_URL=http://localhost:3000/api`). Pour générer localement une version web de développement, utilisez `flutter build web --release` ; la valeur locale par défaut reste `http://localhost:3000/api`. `build.sh` est réservé au build Vercel ; vous pouvez remplacer l’URL Render pour ce script en définissant `API_BASE_URL` dans l’environnement avant de le lancer.
 
