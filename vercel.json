@@ -1,0 +1,11 @@
+{
+  "installCommand": "echo 'Flutter dependencies are installed by build.sh'",
+  "buildCommand": "bash build.sh",
+  "outputDirectory": "build/web",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

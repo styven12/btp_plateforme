@@ -28,6 +28,12 @@ Pour limiter les privilèges, créez un utilisateur MySQL dédié à l’applica
 
 Exemple pour un téléphone physique : `flutter run --dart-define=API_BASE_URL=http://192.168.1.20:3000/api`. `localhost` ne désigne pas l’ordinateur depuis un téléphone. Pour un déploiement, utiliser HTTPS et un domaine API public. Le trafic HTTP clair est uniquement prévu pour le développement.
 
+### Déploiement web sur Vercel
+
+La configuration Vercel à la racine installe Flutter pendant le build, configure l’application pour utiliser `https://btp-plateforme-backend.onrender.com/api` et déploie `build/web`. Le SDK est épinglé sur la révision Flutter indiquée dans `.metadata`. Les chemins de navigation web sont réécrits vers `index.html` pour permettre le routage de l’application.
+
+Les builds Vercel et locaux restent indépendants : pour lancer l’application localement avec l’API locale, utilisez `flutter run` (ou `flutter run --dart-define=API_BASE_URL=http://localhost:3000/api`). Pour générer localement une version web de développement, utilisez `flutter build web --release` ; la valeur locale par défaut reste `http://localhost:3000/api`. `build.sh` est réservé au build Vercel ; vous pouvez remplacer l’URL Render pour ce script en définissant `API_BASE_URL` dans l’environnement avant de le lancer.
+
 ## Fonctionnalités implémentées
 
 - Création de comptes client, entrepreneur (RCCM unique) et technicien ; connexion par téléphone/mot de passe.
